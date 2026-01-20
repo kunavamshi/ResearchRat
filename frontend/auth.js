@@ -1,4 +1,4 @@
-const API_AUTH_URL = 'http://localhost:5000/api/auth';
+const API_AUTH_URL = '/api/auth';
 
 function checkAuth() {
     const token = localStorage.getItem('token');

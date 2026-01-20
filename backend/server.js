@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
 const expenseRoutes = require('./routes/expenses');
 const errorHandler = require('./middleware/errorHandler');
 
@@ -19,6 +20,14 @@ app.use('/api/auth', authRoutes);
 
 const verifyToken = require('./middleware/authMiddleware');
 app.use('/api/expenses', verifyToken, expenseRoutes);
+
+// Serve Frontend Static Files
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+// Handle SPA (Single Page Application) for any other routes
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
+});
 
 // Error Handling
 app.use(errorHandler);

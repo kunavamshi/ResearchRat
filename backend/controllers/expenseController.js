@@ -2,7 +2,7 @@ const db = require('../db');
 
 exports.getAllExpenses = async (req, res, next) => {
     try {
-        const userId = req.user.id; // From authMiddleware
+        const userId = req.user.id;
         const [rows] = await db.query(
             'SELECT * FROM expenses WHERE user_id = ? ORDER BY date DESC, created_at DESC',
             [userId]
@@ -16,7 +16,7 @@ exports.getAllExpenses = async (req, res, next) => {
 exports.addExpense = async (req, res, next) => {
     try {
         const { amount, category, date, note } = req.body;
-        const userId = req.user.id; // From authMiddleware
+        const userId = req.user.id;
 
         if (!amount || amount <= 0 || !category || !date) {
             return res.status(400).json({ success: false, message: 'Please provide valid amount, category and date' });

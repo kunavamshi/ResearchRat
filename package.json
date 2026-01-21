@@ -1,7 +1,0 @@
-{
-    "name": "smart-expense-tracker-root",
-    "private": true,
-    "scripts": {
-        "postinstall": "cd backend && npm install"
-    }
-}

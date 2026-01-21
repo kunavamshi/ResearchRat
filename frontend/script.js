@@ -4,7 +4,7 @@ if (!token) {
     window.location.href = 'login.html';
 }
 
-const API_URL = '/api/expenses';
+const API_URL = 'http://localhost:5000/api/expenses';
 
 // DOM Elements
 const expenseForm = document.getElementById('expense-form');
